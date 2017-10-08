@@ -1,0 +1,15 @@
+Word (string): Word
+Word_Length (int): Number of letters in word
+Num_Syllables (int): Number of syllables in word
+Part_of_Speech (string): Part of Speech of word
+Initial_Etymology (string): First level of etymology
+Final_Etymologes (string): Last level of etymology
+Etymology_Levels (int): Number of etymology levels
+Language Family (string): Language family of word
+Year (int): Year word was used
+Round (int): Round in which word was used
+Times_Used (int): Times word has been used between 1996 and Year chosen
+Years_Since_Last_Used (int): Years between Year chosen and previous Year chosen
+(if first time chosen, 0)
+Error (int): Whether a word resulted in a spelling error
+(1 = Yes; 0 = No)

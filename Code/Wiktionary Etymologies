@@ -1,0 +1,40 @@
+import csv
+import urllib
+
+words = []
+with open('/Users/annariehle/Desktop/Coding Projects/GA Data Science/ds-dc-21/projects/words.csv', 'rU') as f:
+	reader = csv.reader(f)
+	for row in reader:
+		words.append(''.join(row))
+
+def get_url(words):
+	urls = []
+	for word in words:
+		urls.append('https://en.wiktionary.org/wiki/' + word)
+	return urls
+
+urls = get_url(words)
+
+def get_etymology(url, x, y):
+	etymologies = []
+	for link in url[x:y]:
+		f = urllib.urlopen(link)
+		myfile = f.read()
+		start_text = myfile.find('etylcleanup')
+		end_text = myfile.find('etylcleanup', start_text + 1)
+		text_to_write = myfile[start_text:end_text]
+		etymologies.append(text_to_write)
+	return etymologies
+
+def write_etymology(url, x, y):
+	m = open('etymologies_and_parts_of_speech_wiktionary.csv', 'a+')
+	for link in url[x:y]:
+		while x < y:
+			m.write(str(url[x]) + ','),
+			m.write(str(get_etymology(url, x, x+1)) + '\n'),
+			x += 1
+		else:
+			m.close
+			break
+
+write_etymology(urls, 1856, len(urls) - 1)

@@ -1,0 +1,51 @@
+import csv
+import urllib
+
+words = []
+with open('/Users/annariehle/Desktop/Coding Projects/GA Data Science/ds-dc-21/projects/words.csv', 'rU') as f:
+	reader = csv.reader(f)
+	for row in reader:
+		words.append(''.join(row))
+
+def get_url(words):
+	urls = []
+	for word in words:
+		urls.append('https://www.merriam-webster.com/dictionary/' + word)
+	return urls
+
+urls = get_url(words)
+
+def get_etymology(url, x, y):
+	etymologies = []
+	for link in url[x:y]:
+		f = urllib.urlopen(link)
+		myfile = f.read()
+		start_text = myfile.find('Origin and Etymology')
+		end_text = myfile.find('<div id', start_text)
+		text_to_write = myfile[start_text:end_text]
+		etymologies.append(text_to_write)
+	return etymologies
+
+def get_part_of_speech(url, x, y):
+	parts_of_speech = []
+	for link in url[x:y]:
+		f = urllib.urlopen(link)
+		myfile = f.read()
+		start_text = myfile.find('span class="main') + 27
+		end_text = myfile.find('</em>', start_text)
+		part_of_speech = myfile[start_text:end_text]
+		parts_of_speech.append(part_of_speech)
+	return parts_of_speech
+
+def get_etymology_and_part_of_speech(url, x, y):
+	m = open('etymologies_and_parts_of_speech_new.csv', 'a+')
+	for link in url[x:y]:
+		while x < y:
+			m.write(str(get_etymology(url, x, x+1)) + ','),
+			m.write(str(get_part_of_speech(url, x, x+1)) + '\n')
+			x += 1
+		else:
+			m.close
+			break
+
+get_etymology_and_part_of_speech(urls, 2773, len(urls) - 1)
