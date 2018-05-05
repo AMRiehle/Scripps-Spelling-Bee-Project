@@ -7,5 +7,5 @@ The project relies on data from octonion's Spelling Repo as well as data collect
 
 This project was completed using Jupyter Notebooks.
 
-For Exploratory Analysis, please see: https://github.com/AMRiehle/Scripps-Spelling-Bee-Project/blob/master/EDA_AR.ipynb
-</br>For Final Product, please see: https://github.com/AMRiehle/Scripps-Spelling-Bee-Project/blob/master/Final%20Presentation_AR.ipynb
+<a href="https://github.com/AMRiehle/Scripps-Spelling-Bee-Project/blob/master/EDA_AR.ipynb">Exploratory Data Analysis</a>
+<a href="https://github.com/AMRiehle/Scripps-Spelling-Bee-Project/blob/master/Final%20Presentation_AR.ipynb">Final Product</a>
